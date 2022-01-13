@@ -16,7 +16,7 @@ function inject_env(
     r.sendBuffer(
       data.replace(
         `</head>`,
-        `<script>window.${NAMESPACE}=${JSON.stringify(env)}</script></head>`
+        `<script>window["${NAMESPACE}"]=${JSON.stringify(env)}</script></head>`
       ),
       flags
     );
