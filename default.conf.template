@@ -9,6 +9,12 @@ server {
         root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
+
+    set $path ${ASSETS_PUBLIC_PATH};
+
+    if ($path) {
+        rewrite ^${ASSETS_DIR}/(.*)$ ${ASSETS_PUBLIC_PATH}/$1 redirect;
+    }
     
     location = /index.html {
         js_header_filter http.remove_content_length;
