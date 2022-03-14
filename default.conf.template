@@ -19,6 +19,7 @@ server {
     location = /index.html {
         js_header_filter http.remove_content_length;
         js_body_filter http.inject_env;
+        add_header Cache-Control "private, no-store, no-cache, must-revalidate, proxy-revalidate ,max-age=0";
         proxy_pass http://localhost:81;
     }
 }
